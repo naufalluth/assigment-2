@@ -4,21 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Cattolizer: Find Your Own Cat Khodam</title>
+    <title>Kattolizer: Find Your Own Cat Khodam</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
       <div class="card-box">
-        <h1>Temukan khodam kucing kamu disini</h1>
-        <img id="cat-image" src="" alt="" />
-        <label for="name-form"></label>
-        <input id="name-form" type="text" />
-        <h3 id="cat-text">
-          <span id="name-label">.........</span> your Cat Khodam is
-          <span id="cat-label">...........</span>
-        </h3>
-        <button id="cat-button" type="button">Cek Khodam!</button>
+        <h1 id="main-title">Find Your Own <br />Cat Khodam</h1>
+        <div id="main-text" class="main-text">
+          <p>Find the Cat Khodam Within You</p>
+        </div>
+        <form action="">
+          <label for="name-form"></label>
+          <input
+            id="name-form"
+            type="text"
+            name="name-form"
+            placeholder="Type Your Name"
+            autofocus
+          />
+          <button id="cat-button" type="button" autofocus>FIND KHODAM!</button>
+        </form>
       </div>
     </div>
     <script src="script.js"></script>

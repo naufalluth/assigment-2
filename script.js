@@ -1,5 +1,5 @@
 // API ENDPOINT catass.com to randomize cat imagee
-const api = "https://cataas.com/cat?json=true";
+const api = "https://cataas.com/cat?type=xsmall&json=true";
 
 // Array of Funny Names
 const firstNames = [
@@ -28,43 +28,46 @@ const lastNames = [
 ];
 // ELEMENT SELECTION
 const catButton = document.getElementById("cat-button");
-const catImage = document.getElementById("cat-image");
-const catText = document.getElementById("cat-text");
 const nameForm = document.getElementById("name-form");
-const nameLabel = document.getElementById("name-label");
-const catLabel = document.getElementById("cat-label");
-
-nameForm.addEventListener("keyup", () => {
-    const nameFormValue = nameForm.value;
-    nameLabel.textContent = nameFormValue;
-});
+const mainTitle = document.getElementById("main-title");
+const mainText = document.getElementById("main-text");
 
 
+// When the button being clicked start randomizeCat function
 catButton.addEventListener("click", () => {
     const randomizeCat = async () => {
+        mainText.textContent = `Trying to Find Your Cat Khodam.....`
         try {
+            // Fetching Data from API
             const response = await fetch(api);
             const result = await response.json();
             const imageUrl = "https://cataas.com/cat/"
             console.log(result);
-
-
-            catImage.src = `${imageUrl}${result._id}`;
-
+            // Display usernameForm in text
+            const nameFormValue = nameForm.value;
+            // Function to Generate the Names of Cat
             const generateFunnyName = () => {
                 const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
                 const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-
                 return `${randomFirstName} ${randomLastName}`;
-
             }
-
-            catLabel.textContent = `${generateFunnyName()}`;
-
-        } catch {
+            // Create new element in Document
+            const catImage = document.createElement("img");
+            const catText = document.createElement("p");
+            // Element Content
+            catImage.src = `${imageUrl}${result._id}`;
+            catText.textContent = `${nameFormValue} your Cat Khodam is ${generateFunnyName()}`;
+            // override elements style 
+            catImage.style.marginTop = "1rem";
+            catText.style.paddingTop = "0.8rem";
+            // Displaying CatImage and Name
+            mainText.innerHTML = '';
+            mainText.append(catImage, catText);
+            console.log(catImage, catText);
+        } catch (error) {
             console.error("Error fetching cat image:", error);
-            catText.textContent = "Seems like your cat khodam being buried in mountain of Whiskas";
+            mainText.textContent = "Seems like your cat khodam being buried in mountain of whiskas";
         }
     }
     randomizeCat();
-})
+});
