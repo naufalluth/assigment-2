@@ -13,7 +13,6 @@ const firstNames = [
     "Smarty", "Giggles", "Noisy", "Sleepy", "Hungry",
     "Grumpy", "Happy", "Dopey", "Bashful", "Sneezy"
 ];
-
 const lastNames = [
     "McAwesome", "VanAwesome", "O'Fantastic", "DeWonderful",
     "Superstar", "Genius", "Incredible", "Magnificent",
@@ -32,6 +31,13 @@ const nameForm = document.getElementById("name-form");
 const mainTitle = document.getElementById("main-title");
 const mainText = document.getElementById("main-text");
 
+// Preventing for accidentally redirecting page to directory listing and swith the focus to catButton
+nameForm.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        catButton.focus();
+    }
+});
 
 // When the button being clicked start randomizeCat function
 catButton.addEventListener("click", () => {
@@ -56,12 +62,14 @@ catButton.addEventListener("click", () => {
             const catText = document.createElement("p");
             // Element Content
             catImage.src = `${imageUrl}${result._id}`;
+            catImage.alt = "Cat Image";
             catText.textContent = `${nameFormValue} your Cat Khodam is ${generateFunnyName()}`;
             // override elements style 
             catImage.style.marginTop = "1rem";
             catText.style.paddingTop = "0.8rem";
-            // Displaying CatImage and Name
+            // Displaying CatImage and catText
             mainText.innerHTML = '';
+            // clear previous element in mainText elements
             mainText.append(catImage, catText);
             console.log(catImage, catText);
         } catch (error) {
