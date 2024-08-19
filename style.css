@@ -71,12 +71,11 @@ form {
 }
 #cat-button {
   width: 150px;
-  height: 30px;
+  height: 40px;
   background-color: #877afc;
   color: whitesmoke;
   font-weight: 700;
 }
 #cat-button:hover {
   background-color: #6c5cf8;
-  color: whitesmoke;
 }
